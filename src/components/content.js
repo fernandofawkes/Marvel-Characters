@@ -1,4 +1,7 @@
 import React from "react";
+import Filters from "./filters";
+import CharacterList from "./character-list";
+import Pager from "./pager";
 
 export default class Main extends React.Component {
   render() {
@@ -6,8 +9,9 @@ export default class Main extends React.Component {
       <main className="content">
         <div className="centered">
           <h1 className="content-title">Character</h1>
-          <div className="filters">{/*[TODO]*/}</div>
-          <div className="characters-list" />
+          <Filters />
+          <CharacterList characters={this.props.characters} />
+          <Pager page={this.props.page} max={this.props.max} />
         </div>
       </main>
     );
