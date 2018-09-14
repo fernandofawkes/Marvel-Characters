@@ -3,11 +3,28 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-
+/*topo*/
 .ribbon {
   padding: 5px;
   background-color: #ee171f;
 }
 .logo {
   max-width: 10%;
+}
+
+/*rodape*/
+.bottom {
+  border-top: 10px #ee171f solid;
+  display: flex;
+  flex-direction: column;
+  height: 222px;
+}
+.section1 {
+  background-color: #edeef0;
+  flex-grow: 1;
+}
+.section2 {
+  background-color: #e6e7e8;
+  padding: 34px;
+  text-align: center;
 }
