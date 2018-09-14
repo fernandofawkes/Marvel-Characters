@@ -1,7 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
 body {
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  position: relative;
+}
+#root,
+.marvel-characters {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 /*topo*/
 .ribbon {
@@ -12,6 +22,25 @@ body {
   max-width: 10%;
 }
 
+/*conteudo */
+.content {
+  flex-grow: 1;
+  background-color: #f4f8fb;
+  padding: 35px;
+}
+.centered {
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 1440px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px 0 rgba(69, 91, 99, 0.08);
+  height: 100%;
+  padding: 30px 35px;
+}
+.content-title {
+  color: #ee171f;
+  font-weight: 300;
+}
 /*rodape*/
 .bottom {
   border-top: 10px #ee171f solid;
