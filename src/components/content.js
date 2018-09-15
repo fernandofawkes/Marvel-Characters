@@ -18,9 +18,21 @@ export default class Main extends React.Component {
     this.setState({ filter: changeEvent.target.value });
   };
 
-  navigate = () => {};
+  navigate = direction => {
+    this.setState({
+      page: this.state.page + direction
+    });
+  };
 
-  navigateTo = () => {};
+  navigateTo = changeEvent => {
+    let page = this.state.page;
+    if (changeEvent.target.validity.valid) {
+      page = changeEvent.target.value;
+    }
+    this.setState({
+      page
+    });
+  };
 
   render() {
     const { page, itemsPerPage, sortDir, filter } = this.state;

@@ -22,8 +22,8 @@ export default class Pager extends React.Component {
             type="number"
             min="1"
             max={this.props.max}
-            defaultValue={this.props.page}
-            onChange={this.props.navigateTo}
+            value={this.props.page}
+            onChange={this.props.pageChange}
           />
           <span className="pager-total">de {this.props.max}</span>
         </div>
