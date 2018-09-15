@@ -19,9 +19,27 @@ body {
   background-color: #ee171f;
 }
 .logo {
-  max-width: 10%;
+  width: 240px;
+}
+/* filtros */
+/* removendo setas, navegação pelos direcionais do teclado ainda é possível */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input {
+  border: 0;
+  padding: 15px 0;
+  border-radius: 10px;
+  border-bottom: #9b9b9b solid 3px;
 }
 
+input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #ee171f;
+  border-color: #ee171f;
+}
 /*conteudo */
 .content {
   flex-grow: 1;
@@ -47,6 +65,7 @@ body {
   display: grid;
   grid-gap: 35px;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  margin: 20px 0;
 }
 .character {
   border-radius: 10px;
@@ -63,13 +82,30 @@ body {
   border-radius: 50%;
 }
 .character-details {
+  flex-grow: 1;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
+.character-desc {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
 .spacer {
   width: 35%;
   border-bottom: 3px solid #d8dde6;
+}
+/* navegação */
+.pager {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.pager input {
+  text-align: center;
+  width: 50px;
 }
 /*rodape*/
 .bottom {
