@@ -48,7 +48,7 @@ body {
   grid-gap: 35px;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
 }
-.character-block {
+.character {
   border-radius: 10px;
   background-color: #fff;
   display: flex;
@@ -58,6 +58,18 @@ body {
   padding: 10px;
   border: #d8dde6 solid 1px;
   border-bottom: #ee171f solid 3px;
+}
+.character-image {
+  border-radius: 50%;
+}
+.character-details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.spacer {
+  width: 35%;
+  border-bottom: 3px solid #d8dde6;
 }
 /*rodape*/
 .bottom {
