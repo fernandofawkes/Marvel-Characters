@@ -9,16 +9,15 @@ export default class App extends React.Component {
     characters: {}
   };
   componentDidMount() {
-    API.getCharacters()
-      .then(respRaw => respRaw.json())
-      .then(response => {
-        this.setState({
-          characters: response.data.results.reduce((charsObj, char) => {
-            charsObj[char.id] = char;
-            return charsObj;
-          }, {})
-        });
+    const marvel = new API();
+    marvel.getAllCharacters().then(chars => {
+      this.setState({
+        characters: chars.reduce((charsObj, char) => {
+          charsObj[char.id] = char;
+          return charsObj;
+        }, {})
       });
+    });
   }
 
   render() {
