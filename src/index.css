@@ -31,6 +31,7 @@ body {
 .centered {
   box-sizing: border-box;
   margin: auto;
+  background-color: #fff;
   max-width: 1440px;
   border-radius: 8px;
   box-shadow: 0 2px 6px 0 rgba(69, 91, 99, 0.08);
@@ -40,6 +41,23 @@ body {
 .content-title {
   color: #ee171f;
   font-weight: 300;
+}
+
+.characters-list {
+  display: grid;
+  grid-gap: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+.character-block {
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  border: #d8dde6 solid 1px;
+  border-bottom: #ee171f solid 3px;
 }
 /*rodape*/
 .bottom {
