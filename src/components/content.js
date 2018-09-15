@@ -4,18 +4,73 @@ import CharacterList from "./character-list";
 import Pager from "./pager";
 
 export default class Main extends React.Component {
+  state = {
+    page: 1,
+    itemsPerPage: 12,
+    filter: "",
+    sortDir: 1
+  };
+
+  handleDirChange = changeEvent => {
+    this.setState({ sortDir: +changeEvent.target.value });
+  };
+  handleSearch = changeEvent => {
+    this.setState({ filter: changeEvent.target.value });
+  };
+
+  navigate = () => {};
+
+  navigateTo = () => {};
+
   render() {
+    const { page, itemsPerPage, sortDir, filter } = this.state;
+    const { characters } = this.props;
+    let charKeys = Object.keys(characters);
+
+    const relevantResults = charKeys.reduce((obj, key) => {
+      const char = characters[key];
+      if (filter) {
+        if (~char.name.toLowerCase().indexOf(filter.toLowerCase())) {
+          obj[key] = char;
+        }
+      } else {
+        obj[key] = char;
+      }
+      return obj;
+    }, {});
+
+    const relevantKeys = Object.keys(relevantResults);
+
+    const maxPages = Math.floor(relevantKeys.length / itemsPerPage) || 1;
+    const lastItem = page * itemsPerPage;
+    const firstItem = lastItem - itemsPerPage;
+
+    let currentItems = relevantKeys.sort((a, b) =>
+      relevantResults[a].name
+        .toLowerCase()
+        .localeCompare(relevantResults[b].name.toLowerCase())
+    );
+    if (sortDir < 0) currentItems.reverse();
+    currentItems = currentItems
+      .slice(firstItem, lastItem)
+      .map(key => relevantResults[key]);
+
     return (
       <main className="content">
         <div className="centered">
           <h1 className="content-title">Character</h1>
           <Filters
-            handleDir={this.props.dirHandler}
-            dir={this.props.dir}
-            handleSearch={this.props.searchHandler}
+            handleDir={this.handleDirChange}
+            dir={sortDir}
+            handleSearch={this.handleSearch}
           />
-          <CharacterList characters={this.props.characters} />
-          <Pager page={this.props.page} max={this.props.max} />
+          <CharacterList characters={currentItems} />
+          <Pager
+            page={page}
+            max={maxPages}
+            buttonsClick={this.navigate}
+            pageChange={this.navigateTo}
+          />
         </div>
       </main>
     );

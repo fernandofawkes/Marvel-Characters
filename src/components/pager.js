@@ -6,7 +6,14 @@ export default class Pager extends React.Component {
   render() {
     return (
       <div className="pager">
-        <button className="pager-button" type="button">
+        <button
+          disabled={this.props.page === 1}
+          className="pager-button"
+          type="button"
+          onClick={() => {
+            this.props.buttonsClick(-1);
+          }}
+        >
           {/*<LeftArrow />*/}
           {"<"}
         </button>
@@ -16,11 +23,18 @@ export default class Pager extends React.Component {
             min="1"
             max={this.props.max}
             defaultValue={this.props.page}
-            onChange={console.log}
+            onChange={this.props.navigateTo}
           />
           <span className="pager-total">de {this.props.max}</span>
         </div>
-        <button className="pager-button" type="button">
+        <button
+          className="pager-button"
+          type="button"
+          onClick={() => {
+            this.props.buttonsClick(1);
+          }}
+          disabled={this.props.page === this.props.max}
+        >
           {/*<RightArrow />*/}>
         </button>
       </div>
