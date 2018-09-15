@@ -33,9 +33,20 @@ input {
   padding: 15px 0;
   border-radius: 10px;
   border-bottom: #9b9b9b solid 3px;
+  margin-right: 10px;
 }
 
-input:focus {
+select {
+  border: 0;
+  -webkit-appearance: none;
+  padding: 15px;
+  border-radius: 10px;
+}
+select::-ms-expand {
+  display: none;
+}
+input:focus,
+select:focus {
   outline: none;
   box-shadow: 0 0 5px #ee171f;
   border-color: #ee171f;
@@ -101,12 +112,32 @@ input:focus {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  align-items: center;
+  align-items: stretch;
 }
 .pager input {
   text-align: center;
   width: 50px;
 }
+.pager-button {
+  background-color: #fff;
+  border: 1px solid #c2cbd2;
+  padding: 0 5px;
+}
+.pager-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+}
+.pager-button:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.pager-button:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 /*rodape*/
 .bottom {
   border-top: 10px #ee171f solid;

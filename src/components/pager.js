@@ -7,18 +7,21 @@ export default class Pager extends React.Component {
     return (
       <div className="pager">
         <button className="pager-button" type="button">
-          <LeftArrow />
+          {/*<LeftArrow />*/}
+          {"<"}
         </button>
-        <input
-          type="number"
-          min="1"
-          max={this.props.max}
-          defaultValue={this.props.page}
-          onChange={console.log}
-        />
-        <span className="pager-total">de {this.props.max}</span>
+        <div className="pager-numbers">
+          <input
+            type="number"
+            min="1"
+            max={this.props.max}
+            defaultValue={this.props.page}
+            onChange={console.log}
+          />
+          <span className="pager-total">de {this.props.max}</span>
+        </div>
         <button className="pager-button" type="button">
-          <RightArrow />
+          {/*<RightArrow />*/}>
         </button>
       </div>
     );

@@ -25,24 +25,56 @@ export default class App extends React.Component {
       });
   }
 
-  render() {
-    const { characters, page, itemsPerPage } = this.state;
+  handleDirChange = changeEvent => {
+    this.setState({ sortDir: +changeEvent.target.value });
+  };
+  handleSearch = changeEvent => {
+    this.setState({ filter: changeEvent.target.value });
+  };
 
-    // Logic for displaying todos
-    const maxPages = Math.floor(Object.keys(characters).length / itemsPerPage);
+  render() {
+    const { characters, page, itemsPerPage, sortDir, filter } = this.state;
+    let charKeys = Object.keys(characters);
+
+    const relevantResults = charKeys.reduce((obj, key) => {
+      const char = characters[key];
+      if (filter) {
+        if (~char.name.toLowerCase().indexOf(filter.toLowerCase())) {
+          obj[key] = char;
+        }
+      } else {
+        obj[key] = char;
+      }
+      return obj;
+    }, {});
+
+    const relevantKeys = Object.keys(relevantResults);
+
+    const maxPages = Math.floor(relevantKeys.length / itemsPerPage) || 1;
     const lastItem = page * itemsPerPage;
     const firstItem = lastItem - itemsPerPage;
-    const currentItems = Object.keys(characters)
+
+    let currentItems = relevantKeys.sort((a, b) =>
+      relevantResults[a].name
+        .toLowerCase()
+        .localeCompare(relevantResults[b].name.toLowerCase())
+    );
+    if (sortDir < 0) currentItems.reverse();
+    currentItems = currentItems
       .slice(firstItem, lastItem)
-      .reduce((obj, item) => {
-        obj[item] = characters[item];
-        return obj;
-      }, {});
+      .map(key => relevantResults[key]);
 
     return (
       <div className="marvel-characters">
         <Header />
-        <Main characters={currentItems} page={page} max={maxPages} />
+        <Main
+          characters={currentItems}
+          dirHandler={this.handleDirChange}
+          searchHandler={this.handleSearch}
+          page={page}
+          dir={sortDir}
+          max={maxPages}
+        />
         <Footer />
       </div>
     );

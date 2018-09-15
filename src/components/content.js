@@ -9,7 +9,11 @@ export default class Main extends React.Component {
       <main className="content">
         <div className="centered">
           <h1 className="content-title">Character</h1>
-          <Filters />
+          <Filters
+            handleDir={this.props.dirHandler}
+            dir={this.props.dir}
+            handleSearch={this.props.searchHandler}
+          />
           <CharacterList characters={this.props.characters} />
           <Pager page={this.props.page} max={this.props.max} />
         </div>
