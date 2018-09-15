@@ -17,7 +17,11 @@ export default class Main extends React.Component {
   handleSearch = changeEvent => {
     this.setState({ filter: changeEvent.target.value });
   };
-
+  setDir = sortDir => {
+    this.setState({
+      sortDir
+    });
+  };
   navigate = direction => {
     this.setState({
       page: this.state.page + direction
@@ -72,8 +76,9 @@ export default class Main extends React.Component {
         <div className="centered">
           <h1 className="content-title">Character</h1>
           <Filters
-            handleDir={this.handleDirChange}
             dir={sortDir}
+            handleDir={this.handleDirChange}
+            toggleDir={this.setDir}
             handleSearch={this.handleSearch}
           />
           <CharacterList characters={currentItems} />
