@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header";
 import Footer from "./footer";
 import Main from "./content";
+import API from "../api";
 
 export default class App extends React.Component {
   state = {
@@ -12,37 +13,16 @@ export default class App extends React.Component {
     sortDir: 1
   };
   componentDidMount() {
-    // mock da busca de dados da marvel
-    this.setState({
-      characters: {
-        1: "asdadasda",
-        2: "wqe2312",
-        3: "131231",
-        4: "wqe2312",
-        5: "131231",
-        6: "wqe2312",
-        7: "131231",
-        8: "wqe2312",
-        9: "131231",
-        10: "wqe2312",
-        11: "131231",
-        12: "131231",
-        13: "wqe2312",
-        14: "131231",
-        15: "wqe2312",
-        16: "131231",
-        17: "wqe2312",
-        18: "131231",
-        19: "wqe2312",
-        20: "131231",
-        21: "wqe2312",
-        22: "131231",
-        23: "wqe2312",
-        24: "131231",
-        25: "wqe2312",
-        26: "131231"
-      }
-    });
+    API.getCharacters()
+      .then(respRaw => respRaw.json())
+      .then(response => {
+        this.setState({
+          characters: response.data.results.reduce((charsObj, char) => {
+            charsObj[char.id] = char;
+            return charsObj;
+          }, {})
+        });
+      });
   }
 
   render() {
