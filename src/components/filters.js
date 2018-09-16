@@ -13,34 +13,36 @@ export default class Filters extends React.Component {
           onChange={this.props.handleSearch}
           placeholder="Characters"
         />
-        <FilterIcon stroke="#ee171f" />
-        <select
-          className="fitler-order"
-          value={this.props.dir}
-          onChange={this.props.handleDir}
-        >
-          <option value="1">A-Z</option>
-          <option value="-1">Z-A</option>
-        </select>
-        {this.props.dir === 1 ? (
-          <Down
-            width={30}
-            className="filters-icon"
-            stroke="#d8dde6"
-            onClick={() => {
-              this.props.toggleDir(-1);
-            }}
-          />
-        ) : (
-          <Up
-            className="filters-icon"
-            width={30}
-            stroke="#d8dde6"
-            onClick={() => {
-              this.props.toggleDir(1);
-            }}
-          />
-        )}
+        <div className="filter-order">
+          <FilterIcon stroke="#ee171f" />
+          <select
+            className="fitler-order-dropdown"
+            value={this.props.dir}
+            onChange={this.props.handleDir}
+          >
+            <option value="1">A-Z</option>
+            <option value="-1">Z-A</option>
+          </select>
+          {this.props.dir === 1 ? (
+            <Down
+              width={30}
+              className="filters-icon"
+              stroke="#d8dde6"
+              onClick={() => {
+                this.props.toggleDir(-1);
+              }}
+            />
+          ) : (
+            <Up
+              className="filters-icon"
+              width={30}
+              stroke="#d8dde6"
+              onClick={() => {
+                this.props.toggleDir(1);
+              }}
+            />
+          )}
+        </div>
       </div>
     );
   }

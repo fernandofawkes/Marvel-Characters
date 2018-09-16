@@ -19,10 +19,16 @@ body {
   background-color: #ee171f;
 }
 .logo {
-  width: 240px;
+  height: 10vh;
+  max-height: 150px;
 }
 /* filtros */
 .filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter-order {
   display: flex;
   align-items: center;
 }
@@ -59,11 +65,33 @@ select:focus {
   box-shadow: 0 0 5px #ee171f;
   border-color: #ee171f;
 }
+/*  Loader */
+.loader {
+  display: flex;
+  padding: 20px 0px;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.loader::before {
+  content: "";
+  height: 50px;
+  width: 50px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  border: 5px solid #d8dde6;
+  border-left-color: #ccc;
+  animation: spin 1s linear infinite;
+}
 /*conteudo */
 .content {
   flex-grow: 1;
   background-color: #f4f8fb;
-  padding: 35px;
+}
+@media screen and (min-width: 360px) {
+  .content {
+    padding: 20px;
+  }
 }
 .centered {
   box-sizing: border-box;
@@ -84,7 +112,7 @@ select:focus {
 .characters-list {
   display: grid;
   grid-gap: 35px;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   margin: 20px 0;
 }
 .character {
@@ -163,4 +191,13 @@ select:focus {
   background-color: #e6e7e8;
   padding: 34px;
   text-align: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(1turn);
+  }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import Filters from "./filters";
 import CharacterList from "./character-list";
+import Loader from "./loader";
 import Pager from "./pager";
 
 export default class Main extends React.Component {
@@ -81,7 +82,11 @@ export default class Main extends React.Component {
             toggleDir={this.setDir}
             handleSearch={this.handleSearch}
           />
-          <CharacterList characters={currentItems} />
+          {currentItems.length ? (
+            <CharacterList characters={currentItems} />
+          ) : (
+            <Loader />
+          )}
           <Pager
             page={page}
             max={maxPages}
