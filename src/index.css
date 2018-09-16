@@ -19,8 +19,8 @@ body {
   background-color: #ee171f;
 }
 .logo {
-  height: 10vh;
-  max-height: 150px;
+  max-width: 15%;
+  max-height: 95px;
 }
 /* filtros */
 .filters {
@@ -129,6 +129,17 @@ select:focus {
 .character-image {
   border-radius: 50%;
 }
+.character-name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.44;
+  color: #4a4a4a;
+}
+.character-real-name {
+  font-size: 14px;
+  line-height: 1.64;
+  color: #ed1d24;
+}
 .character-details {
   flex-grow: 1;
   display: flex;
@@ -139,6 +150,9 @@ select:focus {
   flex-grow: 1;
   display: flex;
   align-items: center;
+  font-size: 14px;
+  line-height: 1.64;
+  color: #4a4a4a;
 }
 .spacer {
   width: 35%;
