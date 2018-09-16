@@ -10,7 +10,7 @@ Site Publico:
 
 1. acesse [meu site](https://5aattiva-bypnchdvob.now.sh) no seu navegador
 
-##Observações importantes
+## Observações importantes
 
 Infelizmente a API da marvel é limitada a 100 resultados por requisição, isso faz com que para carregar os quase 1500 personagens demore consideravelmente (~1min) e por isso adicionei a tela de carregamento.
 
