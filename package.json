@@ -93,6 +93,8 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "crypto-js": "^3.1.9-1",
+    "moment": "^2.22.2",
     "react-svg-loader": "^2.1.0",
     "svg-inline-loader": "^0.8.0"
   }
