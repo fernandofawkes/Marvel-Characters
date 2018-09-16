@@ -1,6 +1,6 @@
 import React from "react";
 import LeftArrow from "../assets/arrow-left.svg";
-import RightArrow from "../assets/arrow-left.svg";
+import RightArrow from "../assets/arrow-right.svg";
 
 export default class Pager extends React.Component {
   render() {
@@ -14,8 +14,7 @@ export default class Pager extends React.Component {
             this.props.buttonsClick(-1);
           }}
         >
-          {/*<LeftArrow />*/}
-          {"<"}
+          <LeftArrow width={20} stroke="#d8dde6" />
         </button>
         <div className="pager-numbers">
           <input
@@ -35,7 +34,7 @@ export default class Pager extends React.Component {
           }}
           disabled={this.props.page === this.props.max}
         >
-          {/*<RightArrow />*/}>
+          <RightArrow width={20} stroke="#d8dde6" />
         </button>
       </div>
     );

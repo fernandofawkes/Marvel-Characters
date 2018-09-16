@@ -19,9 +19,23 @@ body {
   background-color: #ee171f;
 }
 .logo {
-  width: 240px;
+  max-width: 15%;
+  max-height: 95px;
 }
 /* filtros */
+.filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter-order {
+  display: flex;
+  align-items: center;
+}
+.filters-icon {
+  padding: 5px;
+  cursor: pointer;
+}
 /* removendo setas, navegação pelos direcionais do teclado ainda é possível */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -51,11 +65,33 @@ select:focus {
   box-shadow: 0 0 5px #ee171f;
   border-color: #ee171f;
 }
+/*  Loader */
+.loader {
+  display: flex;
+  padding: 20px 0px;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.loader::before {
+  content: "";
+  height: 50px;
+  width: 50px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  border: 5px solid #d8dde6;
+  border-left-color: #ccc;
+  animation: spin 1s linear infinite;
+}
 /*conteudo */
 .content {
   flex-grow: 1;
   background-color: #f4f8fb;
-  padding: 35px;
+}
+@media screen and (min-width: 360px) {
+  .content {
+    padding: 20px;
+  }
 }
 .centered {
   box-sizing: border-box;
@@ -69,13 +105,14 @@ select:focus {
 }
 .content-title {
   color: #ee171f;
+  font-size: 36px;
   font-weight: 300;
 }
 
 .characters-list {
   display: grid;
   grid-gap: 35px;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   margin: 20px 0;
 }
 .character {
@@ -92,6 +129,17 @@ select:focus {
 .character-image {
   border-radius: 50%;
 }
+.character-name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.44;
+  color: #4a4a4a;
+}
+.character-real-name {
+  font-size: 14px;
+  line-height: 1.64;
+  color: #ed1d24;
+}
 .character-details {
   flex-grow: 1;
   display: flex;
@@ -102,6 +150,9 @@ select:focus {
   flex-grow: 1;
   display: flex;
   align-items: center;
+  font-size: 14px;
+  line-height: 1.64;
+  color: #4a4a4a;
 }
 .spacer {
   width: 35%;
@@ -122,6 +173,7 @@ select:focus {
   background-color: #fff;
   border: 1px solid #c2cbd2;
   padding: 0 5px;
+  cursor: pointer;
 }
 .pager-numbers {
   display: flex;
@@ -153,4 +205,13 @@ select:focus {
   background-color: #e6e7e8;
   padding: 34px;
   text-align: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(1turn);
+  }
 }
