@@ -4,11 +4,11 @@ import CryptoJS from "crypto-js";
 export default class Marvel {
   page = 1;
 
-  getAllCharacters(component) {
-    return this.getMoreCharacters(component);
+  getAllCharacters(pageCallback) {
+    return this.getMoreCharacters(pageCallback);
   }
 
-  getMoreCharacters(component, prevResults = []) {
+  getMoreCharacters(pageCallback, prevResults = []) {
     const instance = this;
     return new Promise((resolve, reject) => {
       Marvel.getCharacters({ page: instance.page })
@@ -16,13 +16,11 @@ export default class Marvel {
         .then(response => {
           instance.page++;
           const combinedResults = prevResults.concat(response.data.results);
+          pageCallback(combinedResults);
           if (response.data.results.length < 100) {
-            resolve(component, combinedResults);
+            resolve(combinedResults);
           } else {
-            component.setState({
-              characters: combinedResults
-            });
-            resolve(this.getMoreCharacters(component, combinedResults));
+            resolve(this.getMoreCharacters(pageCallback, combinedResults));
           }
         });
     });

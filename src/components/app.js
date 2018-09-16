@@ -10,15 +10,17 @@ export default class App extends React.Component {
   };
   componentDidMount() {
     const marvel = new API();
-    marvel.getAllCharacters(this).then(chars => {
-      this.setState({
-        characters: chars.reduce((charsObj, char) => {
-          charsObj[char.id] = char;
-          return charsObj;
-        }, {})
-      });
-    });
+    marvel.getAllCharacters(this.loadCharacters);
   }
+
+  loadCharacters = chars => {
+    this.setState({
+      characters: chars.reduce((charsObj, char) => {
+        charsObj[char.id] = char;
+        return charsObj;
+      }, {})
+    });
+  };
 
   render() {
     return (
