@@ -8,7 +8,7 @@ Localmente:
 
 Site Publico:
 
-1. acesse [meu site](https://5aattiva-uxhgdpswyo.now.sh) no seu navegador
+1. acesse [meu site](https://5aattiva-bypnchdvob.now.sh) no seu navegador
 
 ##Observações importantes
 
