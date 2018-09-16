@@ -25,7 +25,7 @@ export default class Main extends React.Component {
   };
   navigate = direction => {
     this.setState({
-      page: this.state.page + direction
+      page: (+this.state.page + direction)
     });
   };
 
